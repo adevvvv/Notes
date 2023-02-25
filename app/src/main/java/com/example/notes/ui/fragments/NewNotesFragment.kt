@@ -11,8 +11,7 @@ class NewNotesFragment : Fragment() {
     lateinit var binding: FragmentNewNotesBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         binding = FragmentNewNotesBinding.inflate(layoutInflater, container, false)

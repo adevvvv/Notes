@@ -13,13 +13,13 @@ class MainNotesFragment : Fragment() {
     lateinit var binding: FragmentMainNotesBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainNotesBinding.inflate(layoutInflater, container, false)
 
         binding.flbNewNotes.setOnClickListener {
-            Navigation.findNavController(it).navigate((R.id.action_mainNotesFragment_to_newNotesFragment))
+            Navigation.findNavController(it)
+                .navigate((R.id.action_mainNotesFragment_to_newNotesFragment))
         }
 
         return binding.root

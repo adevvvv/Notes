@@ -12,8 +12,7 @@ class EditNotesFragment : Fragment() {
     lateinit var binding: FragmentEditNotesBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentEditNotesBinding.inflate(layoutInflater, container, false)
         return binding.root
