@@ -7,4 +7,6 @@
     <string name="delete_notes">Удалить заметку?</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
+    <string name="delete">Delete</string>
+    <string name="search">Search</string>
 </resources>

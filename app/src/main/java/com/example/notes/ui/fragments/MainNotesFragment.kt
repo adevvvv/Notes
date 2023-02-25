@@ -1,10 +1,9 @@
 package com.example.notes.ui.fragments
 
 import android.os.Bundle
+import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
@@ -20,11 +19,10 @@ class MainNotesFragment : Fragment() {
     lateinit var adapter: NotesAdapter
     var oldMyNotes = arrayListOf<Notes>()
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMainNotesBinding.inflate(layoutInflater, container, false)
-
+        setHasOptionsMenu(true)
         viewModel.getNotes().observe(viewLifecycleOwner) { notesList ->
             oldMyNotes = notesList as ArrayList<Notes>
             adapter = NotesAdapter(requireContext(), notesList)
@@ -33,10 +31,41 @@ class MainNotesFragment : Fragment() {
         }
 
         binding.flbNewNotes.setOnClickListener {
-            Navigation.findNavController(it).navigate((R.id.action_mainNotesFragment_to_newNotesFragment))
+            Navigation.findNavController(it)
+                .navigate((R.id.action_mainNotesFragment_to_newNotesFragment))
         }
 
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_menu, menu)
+
+        val item = menu.findItem(R.id.menu_search)
+        val searchView = item.actionView as SearchView
+        searchView.queryHint = "Search notes"
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                notesFilteting(p0)
+                return true
+            }
+        })
+
+    }
+    private fun notesFilteting(p0: String?) {
+        val newFilteredList = arrayListOf<Notes>()
+
+        for (i in oldMyNotes) {
+            if (i.title.contains(p0!!)) {
+                newFilteredList.add(i)
+            }
+
+        }
+        adapter.filtering(newFilteredList)
     }
 
 

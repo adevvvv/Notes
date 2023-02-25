@@ -38,5 +38,8 @@ class NotesAdapter(val requireContext: Context, var notesList: List<Notes>) :
 
     override fun getItemCount() = notesList.size
 
-
+    fun filtering(newFilteredList: ArrayList<Notes>) {
+        notesList = newFilteredList
+        notifyDataSetChanged()
+    }
 }
