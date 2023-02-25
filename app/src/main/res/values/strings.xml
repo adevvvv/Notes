@@ -4,4 +4,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="title">Title</string>
     <string name="date">10.02.2023</string>
+    <string name="delete_notes">Удалить заметку?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 </resources>
