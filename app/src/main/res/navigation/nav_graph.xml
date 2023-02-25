@@ -12,9 +12,6 @@
         <action
             android:id="@+id/action_editNotesFragment_to_mainNotesFragment"
             app:destination="@id/mainNotesFragment" />
-        <argument
-            android:name="data"
-            app:argType="com.example.notes.model.Notes" />
     </fragment>
     <fragment
         android:id="@+id/newNotesFragment"
